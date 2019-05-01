@@ -1,7 +1,7 @@
 package percolation
 
 import (
-	"algorithms/data-structures/unionfind/datastructures"
+	"cs/algo-ds/unionfind/datastructures"
 	"math/rand"
 	"time"
 )

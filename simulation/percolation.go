@@ -1,4 +1,4 @@
-package percolation
+package simulation
 
 import (
 	"fmt"
@@ -6,13 +6,13 @@ import (
 )
 
 type percolationResult struct {
-	config  RunConfig
+	config  PercolationRunConfig
 	results []float64
 }
 
-func StartSimulation(numGrids int, height int, width int) {
+func StartPercolation(numGrids int, height int, width int) {
 
-	runConfigs := NewRunConfigs(numGrids, height, width)
+	runConfigs := NewPercolationRunConfigs(numGrids, height, width)
 
 	var jobs []chan percolationResult
 
@@ -21,7 +21,7 @@ func StartSimulation(numGrids int, height int, width int) {
 		job := make(chan percolationResult)
 		jobs = append(jobs, job)
 
-		go func(configChannel chan percolationResult, config RunConfig) {
+		go func(configChannel chan percolationResult, config PercolationRunConfig) {
 			var dChan []chan float64
 			for i := 0; i < config.NumberGrids; i++ {
 				c := make(chan float64)
@@ -51,7 +51,7 @@ func StartSimulation(numGrids int, height int, width int) {
 	}
 }
 
-func execPercolationForGridWithChannel(c chan<- float64, runConfig RunConfig) {
+func execPercolationForGridWithChannel(c chan<- float64, runConfig PercolationRunConfig) {
 	fmt.Printf("~~~ Creating grid : %v ~~~\n", runConfig.GridType)
 	newGridFunc := NewUnionFindGrid(runConfig.GridType)
 	grid := newGridFunc(runConfig.Height, runConfig.Width)

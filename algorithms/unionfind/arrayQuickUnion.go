@@ -1,4 +1,6 @@
-package datastructures
+package unionfind
+
+import "cs/algo-ds/utils"
 
 type ArrayQuickUnion struct {
 	nodes []int
@@ -7,13 +9,8 @@ type ArrayQuickUnion struct {
 
 func NewQuickUnion(length int) ArrayQuickUnion {
 	a := ArrayQuickUnion{
-		nodes: make([]int, length),
-		sizes: make([]int, length),
-	}
-
-	for i := 0; i < length; i++ {
-		a.nodes[i] = i
-		a.sizes[i] = 1
+		nodes: utils.NewIntArray(length),
+		sizes: utils.NewIntArray(length),
 	}
 
 	return a

@@ -1,7 +1,7 @@
-package percolation
+package simulation
 
 import (
-	"cs/algo-ds/unionfind/datastructures"
+	"cs/algo-ds/algorithms/unionfind"
 	"math/rand"
 	"time"
 )
@@ -68,9 +68,9 @@ func NewUnionFindGrid(unionFindType UnionFindDsType) NewUnionFindGridFunc {
 func createNewUnionFind(unionFindType UnionFindDsType, total int) UnionFind {
 	switch unionFindType {
 	case ArrayQuickFind:
-		return datastructures.NewQuickFind(total)
+		return unionfind.NewQuickFind(total)
 	default:
-		return datastructures.NewQuickUnion(total)
+		return unionfind.NewQuickUnion(total)
 	}
 }
 

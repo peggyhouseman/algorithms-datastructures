@@ -3,7 +3,9 @@
 // this is a quick find since getting the index value of an array is O(1)
 // connecting is O(n) for 1 node.  for m nodes O(mn)
 
-package datastructures
+package unionfind
+
+import "cs/algo-ds/utils"
 
 type ArrayQuickFind struct {
 	nodes []int
@@ -11,11 +13,7 @@ type ArrayQuickFind struct {
 
 func NewQuickFind(length int) ArrayQuickFind {
 	a := ArrayQuickFind{
-		nodes: make([]int, length),
-	}
-
-	for i := 0; i < length; i++ {
-		a.nodes[i] = i
+		nodes: utils.NewIntArray(length),
 	}
 
 	return a

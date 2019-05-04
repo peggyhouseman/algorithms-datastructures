@@ -1,25 +1,25 @@
-package percolation
+package simulation
 
-type RunConfig struct {
+type PercolationRunConfig struct {
 	NumberGrids int
 	GridType    UnionFindDsType
 	Height      int
 	Width       int
 }
 
-func NewRunConfigs(numGrids int, height int, width int) []RunConfig {
+func NewPercolationRunConfigs(numGrids int, height int, width int) []PercolationRunConfig {
 	if numGrids <= 0 {
-		return []RunConfig{}
+		return []PercolationRunConfig{}
 	}
 
-	return []RunConfig{
-		RunConfig{
+	return []PercolationRunConfig{
+		PercolationRunConfig{
 			NumberGrids: numGrids,
 			GridType:    ArrayQuickFind,
 			Height:      height,
 			Width:       width,
 		},
-		RunConfig{
+		PercolationRunConfig{
 			NumberGrids: numGrids,
 			GridType:    ArrayQuickUnion,
 			Height:      height,
